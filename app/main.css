@@ -49,7 +49,7 @@ body, #viewDiv {
   display: grid;
   grid-template-columns: 60px 70px 70px 70px 70px;
   grid-template-rows: 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 40px;
-  grid-template-areas: "row-label1 canvas canvas canvas canvas" "row-label2 canvas canvas canvas canvas " "row3 canvas canvas canvas canvas" "row4 canvas canvas canvas canvas" ". col1 col2 col3 col4";
+  grid-template-areas: "row-label1 canvas canvas canvas canvas" "row-label2 canvas canvas canvas canvas " "row3 canvas canvas canvas canvas" "row4 canvas canvas canvas canvas" "row5 canvas canvas canvas canvas" "row6 canvas canvas canvas canvas" "row7 canvas canvas canvas canvas" "row8 canvas canvas canvas canvas" "row9 canvas canvas canvas canvas" "row10 canvas canvas canvas canvas" "row11 canvas canvas canvas canvas" "row12 canvas canvas canvas canvas" ". col1 col2 col3 col4";
 
   justify-items: stretch;
   align-items: stretch;
