@@ -183,7 +183,7 @@ import { months, years } from "./constants";
       return {
         month,
         year, 
-        value: month
+        value: MonthName
       };
     });
     return createDataObjects(responseChartData);
@@ -209,7 +209,7 @@ import { months, years } from "./constants";
       return {
         month,
         year, 
-        value: month
+        value: MonthName
       };
     });
     return createDataObjects(responseChartData);
@@ -228,7 +228,7 @@ import { months, years } from "./constants";
         formattedChartData.push({
           col: t,
           row: s,
-          value: s
+          value: MonthName
         });
 
       });
