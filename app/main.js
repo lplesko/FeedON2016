@@ -181,8 +181,8 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                         return datum.year === year && datum.month === month;
                     });
                     formattedChartData.push({
-                        col: s,
-                        row: t,
+                        col: t,
+                        row: s,
                         value: matches.length > 0 ? matches[0].value : 0
                     });
                 });
