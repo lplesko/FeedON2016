@@ -23,8 +23,8 @@ import { months, years } from "./constants";
     outFields: [ "MonthName", "YEAR" ]
   });
 
-  const countiesLayer = new FeatureLayer({
-    title: "counties",
+  const districtsLayer = new FeatureLayer({
+    title: "districts",
     portalItem: {
       id: "3a8aae65f6d64c9dacce3049ebe32f0c"
     },
@@ -40,7 +40,7 @@ import { months, years } from "./constants";
 
   const map = new EsriMap({
     basemap: "gray-vector",
-    layers: [ layer, countiesLayer ]
+    layers: [ layer, districtsLayer ]
   });
 
   const view = new MapView({
@@ -75,7 +75,7 @@ import { months, years } from "./constants";
   view.ui.add("titleDiv", "top-right");
 
   const layerView = await view.whenLayerView(layer) as esri.FeatureLayerView;
-  const countiesLayerView = await view.whenLayerView(countiesLayer) as esri.FeatureLayerView;
+  const districtsLayerView = await view.whenLayerView(districtsLayer) as esri.FeatureLayerView;
 
   const layerStats = await queryLayerStatistics(layer);
   updateGrid(layerStats, layerView);
@@ -120,7 +120,7 @@ import { months, years } from "./constants";
     event.stopPropagation();
 
     const hitResponse = await view.hitTest(event);
-    const hitResults = hitResponse.results.filter( hit => hit.graphic.layer === countiesLayer );
+    const hitResults = hitResponse.results.filter( hit => hit.graphic.layer === districtsLayer );
     if(hitResults.length > 0){
       const graphic = hitResults[0].graphic;
       if(previousId !== graphic.attributes.FID){
@@ -130,7 +130,7 @@ import { months, years } from "./constants";
           highlight = null;
         }
         
-        highlight = countiesLayerView.highlight([previousId]);
+        highlight = districtsLayerView.highlight([previousId]);
         const geometry = graphic && graphic.geometry;
         let queryOptions = {
           geometry,
