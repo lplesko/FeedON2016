@@ -132,7 +132,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                                 return {
                                     month: month,
                                     year: year,
-                                    value: MonthName
+                                    value: feature.attributes.value
                                 };
                             });
                             return [2 /*return*/, createDataObjects(responseChartData)];
@@ -165,7 +165,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                                 return {
                                     month: month,
                                     year: year,
-                                    value: MonthName
+                                    value: feature.attributes.value
                                 };
                             });
                             return [2 /*return*/, createDataObjects(responseChartData)];
@@ -183,7 +183,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                     formattedChartData.push({
                         col: t,
                         row: s,
-                        value: MonthName
+                        value: matches.length > 0 ? matches[0].value : 0
                     });
                 });
             });
