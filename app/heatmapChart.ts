@@ -12,8 +12,8 @@ let data: ChartData[] = [];
 
 const start = new Color("#eaf5ff");
 const end = new Color("#003E72");
-const numCols = 12;
-const numRows = 4;
+const numCols = 4;
+const numRows = 12;
 
 function normalize(value:number, minValue:number, maxValue:number) {
   return (value - minValue) / (maxValue - minValue);
