@@ -72,6 +72,14 @@ body, #viewDiv {
 .col2 { grid-area: col2; }
 .col3 { grid-area: col3; }
 .col4 { grid-area: col4; }
+.col5 { grid-area: col5; }
+.col6 { grid-area: col6; }
+.col7 { grid-area: col7; }
+.col8 { grid-area: col8; }
+.col9 { grid-area: col9; }
+.col10 { grid-area: col10; }
+.col11 { grid-area: col11; }
+.col12 { grid-area: col12; }
 .row-label1 { grid-area: row-label1; }
 .row-label2 { grid-area: row-label2; }
 .row3 { grid-area: row3; }
