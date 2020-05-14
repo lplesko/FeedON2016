@@ -117,7 +117,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                                     statisticType: "sum"
                                 })
                             ];
-                            query.groupByFieldsForStatistics = ["Year + '-' + MonthName + '-' + ED_ID"];
+                            query.groupByFieldsForStatistics = ["Year + '-' + MonthName"];
                             query.geometry = geometry;
                             query.distance = distance;
                             query.units = units;
@@ -154,7 +154,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                                     statisticType: "sum"
                                 })
                             ];
-                            query.groupByFieldsForStatistics = ["Year + '-' + MonthName + '-' + ED_ID"];
+                            query.groupByFieldsForStatistics = ["Year + '-' + MonthName"];
                             return [4 /*yield*/, layer.queryFeatures(query)];
                         case 1:
                             queryResponse = _a.sent();
@@ -209,7 +209,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                         portalItem: {
                             id: "3a8aae65f6d64c9dacce3049ebe32f0c"
                         },
-                        outFields: ["ED_ID", "MonthName", "Year"]
+                        outFields: ["MonthName", "Year"]
                     });
                     districtsLayer = new FeatureLayer({
                         title: "districts",
