@@ -20,7 +20,7 @@ import { months, years } from "./constants";
     portalItem: {
       id: "3a8aae65f6d64c9dacce3049ebe32f0c"
     },
-    outFields: [ "MonthName", "Year" ]
+    outFields: [ "ED_ID", "MonthName", "Year" ]
   });
 
   const districtsLayer = new FeatureLayer({
@@ -168,7 +168,7 @@ import { months, years } from "./constants";
         statisticType: "sum"
       })
     ];
-    query.groupByFieldsForStatistics = [ "Year + '-' + MonthName" ];
+    query.groupByFieldsForStatistics = [ "Year + '-' + MonthName + '-' + ED_ID" ];
     query.geometry = geometry;
     query.distance = distance;
     query.units = units;
@@ -198,7 +198,7 @@ import { months, years } from "./constants";
         statisticType: "sum"
       })
     ];
-    query.groupByFieldsForStatistics = [ "Year + '-' + MonthName" ];
+    query.groupByFieldsForStatistics = [ "Year + '-' + MonthName + '-' + ED_ID" ];
 
     const queryResponse = await layer.queryFeatures(query);
 
