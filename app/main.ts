@@ -218,8 +218,8 @@ import { months, years } from "./constants";
   function createDataObjects(data: StatisticsResponse[]): ChartData[] {
     let formattedChartData: ChartData[] = [];
 
-    months.forEach( (month, t) => {
-      years.forEach( (year, s) => {
+    months.forEach( (month, s) => {
+      years.forEach( (year, t) => {
 
         const matches = data.filter( datum => {
           return datum.year === year && datum.month === month;
