@@ -175,14 +175,14 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
         }
         function createDataObjects(data) {
             var formattedChartData = [];
-            constants_1.months.forEach(function (month, t) {
-                constants_1.years.forEach(function (year, s) {
+            constants_1.months.forEach(function (month, s) {
+                constants_1.years.forEach(function (year, t) {
                     var matches = data.filter(function (datum) {
                         return datum.year === year && datum.month === month;
                     });
                     formattedChartData.push({
-                        col: t,
-                        row: s,
+                        col: s,
+                        row: t,
                         value: matches.length > 0 ? matches[0].value : 0
                     });
                 });
