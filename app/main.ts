@@ -183,7 +183,7 @@ import { months, years } from "./constants";
       return {
         month,
         year, 
-        value: MonthName
+        value: feature.attributes.value
       };
     });
     return createDataObjects(responseChartData);
@@ -209,7 +209,7 @@ import { months, years } from "./constants";
       return {
         month,
         year, 
-        value: MonthName
+        value: feature.attributes.value
       };
     });
     return createDataObjects(responseChartData);
@@ -228,7 +228,7 @@ import { months, years } from "./constants";
         formattedChartData.push({
           col: t,
           row: s,
-          value: MonthName
+          value: matches.length > 0 ? matches[0].value : 0
         });
 
       });
