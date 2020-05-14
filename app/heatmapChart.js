@@ -7,7 +7,7 @@ define(["require", "exports", "esri/views/layers/support/FeatureFilter", "esri/C
     var data = [];
     var start = new Color("#eaf5ff");
     var end = new Color("#003E72");
-    var numCols = 4;
+    var numCols = 12;
     var numRows = 4;
     function normalize(value, minValue, maxValue) {
         return (value - minValue) / (maxValue - minValue);
