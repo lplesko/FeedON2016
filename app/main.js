@@ -149,9 +149,9 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                             query = layer.createQuery();
                             query.outStatistics = [
                                 new StatisticDefinition({
-                                    onStatisticField: "36",
+                                    onStatisticField: "1",
                                     outStatisticFieldName: "value",
-                                    statisticType: "first"
+                                    statisticType: "sum"
                                 })
                             ];
                             query.groupByFieldsForStatistics = ["YEAR + '-' + MonthName"];
