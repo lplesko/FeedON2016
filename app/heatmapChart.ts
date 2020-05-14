@@ -125,8 +125,8 @@ function addCanvasListeners() {
 
 function onCellSelect(cell:CellHighlight) {
   
-  const year = years[cell.row];
-  const month = months[cell.col];
+  const year = years[cell.col];
+  const month = months[cell.row];
 
   if(mousemoveEnabled){
     highlighted = { col: cell.col, row: cell.row };
