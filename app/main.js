@@ -227,7 +227,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                     });
                     map = new EsriMap({
                         basemap: "gray-vector",
-                        layers: [districtsLayer]
+                        layers: [layer, districtsLayer]
                     });
                     view = new MapView({
                         map: map,
