@@ -53,8 +53,8 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                     }
                 }
             });
-            annualLayerView.filter = new FeatureFilter({
-                where: "YearString = '" + selectedYear + "'"
+            layerView.filter = new FeatureFilter({
+                where: "Year = '" + selectedYear + "'"
             });
         }
         function resetOnCollapse(expanded) {
@@ -190,8 +190,8 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
             return formattedChartData;
         }
         function resetVisuals() {
-            annualLayerView.filter = null;
-            annualLayerView.effect = null;
+            layerView.filter = null;
+            layerView.effect = null;
             if (highlight) {
                 highlight.remove();
                 highlight = null;
