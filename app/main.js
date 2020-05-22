@@ -125,7 +125,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                             return [4 /*yield*/, layerView.queryFeatures(query)];
                         case 1:
                             queryResponse = _a.sent();
-                            responseChartData = queryResponse.features.map(function (feature) {
+                            responseChartData = queryResponse.features.mainMap(function (feature) {
                                 var timeSpan = feature.attributes["EXPR_1"].split("-");
                                 var year = timeSpan[0];
                                 var month = timeSpan[1];
@@ -158,7 +158,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                             return [4 /*yield*/, layer.queryFeatures(query)];
                         case 1:
                             queryResponse = _a.sent();
-                            responseChartData = queryResponse.features.map(function (feature) {
+                            responseChartData = queryResponse.features.mainMap(function (feature) {
                                 var timeSpan = feature.attributes["EXPR_1"].split("-");
                                 var year = timeSpan[0];
                                 var month = timeSpan[1];
@@ -201,7 +201,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
             });
             heatmapChart_1.updateGrid(layerStats, layerView, true);
         }
-        var layer, districtsLayer, map, view, yearsElement, chartExpand, yearsExpand, layerView, districtsLayerView, layerStats, yearsNodes, highlight, previousId, resetBtn;
+        var layer, districtsLayer, annualLayer, mainMap, view, yearsElement, chartExpand, yearsExpand, layerView, districtsLayerView, annualLayerView, layerStats, yearsNodes, highlight, previousId, resetBtn;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -225,12 +225,19 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                             })
                         })
                     });
-                    map = new EsriMap({
+                    annualLayer = new FeatureLayer({
+                        portalItem: {
+                            id: "c1c22edd96a4477ba505e222e176ba80"
+                        },
+                        outFields: ["YearString"]
+                    });
+                    
+                    mainMap = new EsriMap({
                         basemap: "gray-vector",
                         layers: [layer, districtsLayer]
                     });
                     view = new MapView({
-                        map: map,
+                        map: mainMap,
                         container: "viewDiv",
                         center: [-85, 50],
                         zoom: 4,
