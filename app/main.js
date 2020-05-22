@@ -242,7 +242,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                         layers: [annualLayer]
                     });
                     
-                    mapList = [annualMap, mainMap];
+                    mapList = ["annualMap", "mainMap"];
                     
                     view = new MapView({
                         map: mapList[0],
