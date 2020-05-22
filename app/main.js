@@ -201,7 +201,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
             });
             heatmapChart_1.updateGrid(layerStats, layerView, true);
         }
-        var layer, districtsLayer, annualLayer, mainMap, annualMap, mainView, annualView, yearsElement, chartExpand, yearsExpand, layerView, districtsLayerView, annualLayerView, layerStats, yearsNodes, highlight, previousId, resetBtn;
+        var layer, districtsLayer, annualLayer, mainMap, annualMap, mapList, view, yearsElement, chartExpand, yearsExpand, layerView, districtsLayerView, annualLayerView, layerStats, yearsNodes, highlight, previousId, resetBtn;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -242,19 +242,10 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                         layers: [annualLayer]
                     });
                     
-                    mainView = new MapView({
-                        map: mainMap,
-                        container: "viewDiv",
-                        center: [-85, 50],
-                        zoom: 4,
-                        highlightOptions: {
-                            color: "#262626",
-                            haloOpacity: 1,
-                            fillOpacity: 0
-                        }
-                    });
-                    annualView = new MapView({
-                        map: annualMap,
+                    mapList = [mainMap, annualMap];
+
+                    view = new MapView({
+                        map: mapList[0],
                         container: "viewDiv",
                         center: [-85, 50],
                         zoom: 4,
@@ -270,13 +261,13 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                     yearsElement = document.getElementById("years-filter");
                     yearsElement.style.visibility = "visible";
                     chartExpand = new Expand({
-                        view: mainView,
+                        view: view,
                         content: document.getElementById("chartDiv"),
                         expandIconClass: "esri-icon-chart",
                         group: "top-left"
                     });
                     yearsExpand = new Expand({
-                        view: annualView,
+                        view: view,
                         content: yearsElement,
                         expandIconClass: "esri-icon-filter",
                         group: "top-left"
