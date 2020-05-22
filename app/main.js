@@ -190,8 +190,8 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
             return formattedChartData;
         }
         function resetVisuals() {
-            layerView.filter = null;
-            layerView.effect = null;
+            annualLayerView.filter = null;
+            annualLayerView.effect = null;
             if (highlight) {
                 highlight.remove();
                 highlight = null;
