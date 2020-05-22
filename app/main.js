@@ -192,7 +192,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
         function resetVisuals() {
             annualLayerView.filter = new FeatureFilter({
                 where: "YearString = '" + "2016" + "'"
-            layerView.filter = null;
+            });
             layerView.effect = null;
             if (highlight) {
                 highlight.remove();
