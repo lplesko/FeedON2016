@@ -53,8 +53,8 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                     }
                 }
             });
-            annualLayerView.filter = new FeatureFilter({
-                where: "YearString = '" + selectedYear + "'"
+            layerView.filter = new FeatureFilter({
+                where: "Year = '" + selectedYear + "'"
             });
         }
         function resetOnCollapse(expanded) {
@@ -72,7 +72,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                             return [4 /*yield*/, view.hitTest(event)];
                         case 1:
                             hitResponse = _a.sent();
-                            hitResults = hitResponse.results.filter(function (hit) { return hit.graphic.layer === districtsLayer; });
+                            hitResults = hitResponse.results.filter(function (hit) { return hit.graphic.layer === countiesLayer; });
                             if (!(hitResults.length > 0)) return [3 /*break*/, 3];
                             graphic = hitResults[0].graphic;
                             if (!(previousId !== graphic.attributes.FID)) return [3 /*break*/, 3];
@@ -81,7 +81,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                                 highlight.remove();
                                 highlight = null;
                             }
-                            highlight = districtsLayerView.highlight([previousId]);
+                            highlight = countiesLayerView.highlight([previousId]);
                             geometry = graphic && graphic.geometry;
                             queryOptions = {
                                 geometry: geometry,
@@ -117,7 +117,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                                     statisticType: "sum"
                                 })
                             ];
-                            query.groupByFieldsForStatistics = ["Year + '-' + MonthName"];
+                            query.groupByFieldsForStatistics = ["YEAR + '-' + MonthName"];
                             query.geometry = geometry;
                             query.distance = distance;
                             query.units = units;
@@ -154,7 +154,7 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                                     statisticType: "sum"
                                 })
                             ];
-                            query.groupByFieldsForStatistics = ["Year + '-' + MonthName"];
+                            query.groupByFieldsForStatistics = ["YEAR + '-' + MonthName"];
                             return [4 /*yield*/, layer.queryFeatures(query)];
                         case 1:
                             queryResponse = _a.sent();
@@ -190,10 +190,8 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
             return formattedChartData;
         }
         function resetVisuals() {
-            annualLayerView.filter = new FeatureFilter({
-                where: "YearString = '" + "2016" + "'"
-            });
-            annualLayerView.effect = null;
+            layerView.filter = null;
+            layerView.effect = null;
             if (highlight) {
                 highlight.remove();
                 highlight = null;
@@ -203,26 +201,18 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
             });
             heatmapChart_1.updateGrid(layerStats, layerView, true);
         }
-        var annualLayer, layer, districtsLayer, map, view, yearsElement, chartExpand, yearsExpand, annualLayerView, layerView, districtsLayerView, layerStats, yearsNodes, highlight, previousId, resetBtn;
+        var layer, countiesLayer, map, view, yearsElement, chartExpand, yearsExpand, layerView, countiesLayerView, layerStats, yearsNodes, highlight, previousId, resetBtn;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    annualLayer = new FeatureLayer({
-                        portalItem: {
-                            id: "c1c22edd96a4477ba505e222e176ba80"
-                        },
-                        outFields: ["YearString"]
-                    });
-                    
                     layer = new FeatureLayer({
                         portalItem: {
                             id: "3a8aae65f6d64c9dacce3049ebe32f0c"
                         },
-                        outFields: ["MonthName", "Year"]
+                        outFields: ["MonthName", "YEAR"]
                     });
-                    
-                    districtsLayer = new FeatureLayer({
-                        title: "districts",
+                    countiesLayer = new FeatureLayer({
+                        title: "counties",
                         portalItem: {
                             id: "3a8aae65f6d64c9dacce3049ebe32f0c"
                         },
@@ -235,10 +225,9 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                             })
                         })
                     });
-                    
                     map = new EsriMap({
                         basemap: "gray-vector",
-                        layers: [annualLayer, layer, districtsLayer]
+                        layers: [layer, countiesLayer]
                     });
                     view = new MapView({
                         map: map,
@@ -274,9 +263,9 @@ define(["require", "exports", "esri/Map", "esri/views/MapView", "esri/layers/Fea
                     return [4 /*yield*/, view.whenLayerView(layer)];
                 case 2:
                     layerView = _a.sent();
-                    return [4 /*yield*/, view.whenLayerView(districtsLayer)];
+                    return [4 /*yield*/, view.whenLayerView(countiesLayer)];
                 case 3:
-                    districtsLayerView = _a.sent();
+                    countiesLayerView = _a.sent();
                     return [4 /*yield*/, queryLayerStatistics(layer)];
                 case 4:
                     layerStats = _a.sent();
